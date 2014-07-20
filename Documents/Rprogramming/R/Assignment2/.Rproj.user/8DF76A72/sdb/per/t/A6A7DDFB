@@ -1,0 +1,17 @@
+{
+    "contents" : "makeVector <- function(x = numeric()) {\n  m <- NULL\n  set <- function(y) {\n    x <<- y\n    m <<- NULL\n  }\n  get <- function() x\n  setmean <- function(mean) m <<- mean\n  getmean <- function() m\n  list(set = set, get = get,\n       setmean = setmean,\n       getmean = getmean)\n}\n\n##The makeVector function creates a  a \"vector\" - a list containing functions to\n##set(y) - set the value of the vector\n##get(x) - get the value of the vector\n##setmean(m) - set the value of the mean\n##getmean(m) - get the value of the mean\n\ncachemean <- function(x, ...) {\n  m <- x$getmean()\n  if(!is.null(m)) {\n    message(\"getting cached data\")\n    return(m)\n  }\n  data <- x$get()\n  m <- mean(data, ...)\n  x$setmean(m)\n  m\n}\n\n##function calculates the mean of the special \"vector\" created with the above function. \n##However, it first checks to see if the mean has already been calculated. \n##If so, it gets the mean from the cache and skips the computation. \n##Otherwise, it calculates the mean of the data and sets the value of the mean in the cache \n##via the setmean function.",
+    "created" : 1405879560905.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2209536445",
+    "id" : "A6A7DDFB",
+    "lastKnownWriteTime" : 1405881129,
+    "path" : "~/R programming/R/Assignment 2/example.R",
+    "project_path" : "example.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
